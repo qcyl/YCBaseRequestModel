@@ -27,6 +27,7 @@ typedef void(^failureBlock)(NSURLSessionDataTask *task, NSError *error);
        requestType:(YCHttpRequestType)requestType
         parameters:(id)parameters
            success:(successBlcok)seccess
-           failure:(failureBlock)failure;
+           failure:(failureBlock)failure
+           showHUD:(BOOL)showHUD;
 
 @end

@@ -24,7 +24,8 @@
        requestType:(YCHttpRequestType)requestType
         parameters:(id)parameters
            success:(successBlcok)success
-           failure:(failureBlock)failure {
+           failure:(failureBlock)failure
+           showHUD:(BOOL)showHUD {
     
     switch (requestType) {
         case YCHttpRequestTypeGET:

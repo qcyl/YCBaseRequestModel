@@ -15,10 +15,6 @@
 - (BOOL)isNeedCache {
     return NO;
 }
-- (YCCacheType)cacheType {
-    return YCCacheTypeOfFile;
-}
-
 - (NSTimeInterval)cacheTimeInSeconds {
     return -1;
 }
@@ -32,6 +28,9 @@
 }
 - (id)requestParameters {
     return nil;
+}
+- (BOOL)isShowHUD {
+    return YES;
 }
 
 #pragma mark - 公共方法
@@ -59,7 +58,7 @@
         if (callBack){
             callBack(nil, error);
         }
-    }];
+    } showHUD:[self isShowHUD]];
 }
 // 保存缓存
 - (void)saveCache:(id)obj {
