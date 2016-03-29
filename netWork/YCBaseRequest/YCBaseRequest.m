@@ -134,5 +134,15 @@
     }
 }
 
+// 清除全部缓存
++ (void)cleanCache {
+    YCBaseRequest *base = [[self alloc] init];
+    NSDirectoryEnumerator *dirEnum = [[NSFileManager defaultManager] enumeratorAtPath:[base basePath]];
+    NSString *fileName;
+    while (fileName= [dirEnum nextObject]) {
+        [[NSFileManager defaultManager] removeItemAtPath:[[base basePath] stringByAppendingPathComponent:fileName] error:nil];
+    }
+}
+
 
 @end

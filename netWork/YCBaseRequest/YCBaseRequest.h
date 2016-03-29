@@ -52,4 +52,7 @@ typedef void(^YCCompletionCallBack)(id obj, NSError *error);
 /// 发送请求
 - (void)startWithCompletionCallBack:(YCCompletionCallBack)callBack;
 
+/// 清除全部缓存(用YCBaseRequest调用)
++ (void)cleanCache;
+
 @end
