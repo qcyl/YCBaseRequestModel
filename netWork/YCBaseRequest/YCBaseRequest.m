@@ -32,6 +32,20 @@
 - (BOOL)isShowHUD {
     return YES;
 }
+- (NSArray *)ignoredParameters {
+    NSMutableArray *arrayM = [NSMutableArray array];
+    [[self class] mj_enumerateProperties:^(MJProperty *property, BOOL *stop) {
+        const char *att = property_getAttributes(property.property);
+        NSString *attString = @(att);
+        NSArray *attArray = [attString componentsSeparatedByString:@","];
+        for (NSString *str in attArray) {
+            if ([str hasPrefix:@"T"] && [str rangeOfString:@"<YCIgnore>"].location != NSNotFound) {
+                [arrayM addObject:property.name];
+            }
+        }
+    }];
+    return arrayM;
+}
 
 #pragma mark - 公共方法
 - (void)startWithoutCacheCompletionCallBack:(YCCompletionCallBack)callBack {

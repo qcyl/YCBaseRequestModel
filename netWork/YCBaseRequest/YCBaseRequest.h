@@ -10,6 +10,10 @@
 #import "YCHttpClient.h"
 #import "MJExtension.h"
 
+// 用于忽略的字段（不是请求的参数）
+@protocol YCIgnore <NSObject>
+@end
+
 /// 请求回调
 typedef void(^YCCompletionCallBack)(id obj, NSError *error);
 
@@ -32,6 +36,8 @@ typedef void(^YCCompletionCallBack)(id obj, NSError *error);
 - (id)requestParameters;
 /// 是否显示加载圈(默认显示)
 - (BOOL)isShowHUD;
+/// 请求忽略参数
+- (NSArray *)ignoredParameters;
 
 #pragma mark - 公共方法
 /// 强制更新缓存
